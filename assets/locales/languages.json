@@ -1,0 +1,26 @@
+[
+    {
+        "name": "English",
+        "title": "English",
+        "languageCode": "en",
+        "countryCode": "US",
+        "file": "en_US.json",
+        "symbol": "A"
+    },
+    {
+        "name": "Hindi",
+        "title": "हिन्दी",
+        "languageCode": "hi",
+        "countryCode": "IN",
+        "file": "hi_IN.json",
+        "symbol": "अ"
+    },
+    {
+        "name": "Urdu",
+        "title": "उर्दू",
+        "languageCode": "ur",
+        "countryCode": "UR",
+        "file": "ur_UR.json",
+        "symbol": "ا"
+    }
+]
