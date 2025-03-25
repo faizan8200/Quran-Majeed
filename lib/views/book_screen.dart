@@ -106,28 +106,6 @@ class _BookScreenState extends State<BookScreen> {
                                     ),
                                   ),
                                 ),
-                          /* MediaQuery.of(context).orientation ==
-                                  Orientation.portrait
-                              ? Center(
-                                  child: Image.memory(
-                                    bookController.images[index],
-                                    fit: BoxFit.fill,
-                                    alignment: Alignment.center,
-                                    height:
-                                        const Helper().getDeviceheight(context),
-                                  ),
-                                )
-                              : SingleChildScrollView(
-                                  child: Center(
-                                    child: Image.memory(
-                                      bookController.images[index],
-                                      fit: BoxFit.fitWidth,
-                                      alignment: Alignment.topCenter,
-                                      width:
-                                          const Helper().getDevicewidth(context),
-                                    ),
-                                  ),
-                                ), */
                           //bookmark Icon
                           Positioned(
                             right: -5,
@@ -239,16 +217,18 @@ class _BookScreenState extends State<BookScreen> {
                           key: bookController.four,
                           description:
                               "Swipe right to left for view previous page",
-                          onBarrierClick: () {
+                          onBarrierClick: () async {
                             ShowCaseWidget.of(context).dismiss();
                             bookController.isScreenTap = false;
-                            global.sp!.setBool("isDisplayShowCase", false);
+                            await global.sp!
+                                .setBool("isDisplayShowCase", false);
                             setState(() {});
                           },
-                          onTargetClick: () {
+                          onTargetClick: () async {
                             ShowCaseWidget.of(context).dismiss();
                             bookController.isScreenTap = false;
-                            global.sp!.setBool("isDisplayShowCase", false);
+                            await global.sp!
+                                .setBool("isDisplayShowCase", false);
                             setState(() {});
                           },
                           disposeOnTap: true,

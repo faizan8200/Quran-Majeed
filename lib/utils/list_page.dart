@@ -12653,8 +12653,8 @@ QuranIndex quranIndex = QuranIndex(
       PageInfo(
         pageNumber: 745,
         juz: 27,
-        surahName: "Ar-Rahman",
-        surahNumber: 55,
+        surahName: "Al-Waqi'ah",
+        surahNumber: 56,
         startAyah: 1,
         endAyah: null,
         imagePath: "assets/images/quran/745.webp",
@@ -29746,8 +29746,8 @@ QuranIndex quranIndex = QuranIndex(
     PageInfo(
       pageNumber: 745,
       juz: 27,
-      surahName: "Ar-Rahman",
-      surahNumber: 55,
+      surahName: "Al-Waqi'ah",
+      surahNumber: 56,
       startAyah: 1,
       endAyah: null,
       imagePath: "assets/images/quran/745.webp",

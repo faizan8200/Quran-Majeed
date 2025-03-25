@@ -25,14 +25,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
       body: MainBodyPadding(
         top: 0,
         child: Column(
-          children: [
-            /* Align(
-              alignment: Alignment.centerRight,
-              child: InkWell(
-                onTap: () {},
-                child: Text("Skip"),
-              ),
-            ), */
+          children: [            
             Expanded(
               child: PageView.builder(
                 itemCount: introductionController.introList.length,

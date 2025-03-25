@@ -10,9 +10,9 @@ import 'package:quran_app/utils/global.dart' as global;
 import 'package:quran_app/utils/list_page.dart';
 import 'package:quran_app/views/aboutus_screen.dart';
 import 'package:quran_app/views/book_index_screen.dart';
-import 'package:quran_app/views/language_screen.dart';
 import 'package:quran_app/views/quick_quide_screen.dart';
 import 'package:quran_app/widgets/main_body_padding.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 class BookController extends GetxController {
@@ -32,11 +32,12 @@ class BookController extends GetxController {
   BookMarkModel bookMarkModel = BookMarkModel();
 //list:
   List<SettingModel> settingList = [
-    SettingModel(id: 1, icon: Icons.translate, title: "Language"),
-    SettingModel(id: 1, icon: Icons.emoji_objects_outlined, title: "Screen On"),
-    SettingModel(id: 1, icon: Icons.info_outline_rounded, title: "Quick Guide"),
-    SettingModel(id: 1, icon: Icons.info_outline_rounded, title: "About Us"),
-    SettingModel(id: 1, icon: Icons.link, title: "Web Link"),
+    // SettingModel(id: 1, icon: Icons.translate, title: "Language"),
+    SettingModel(id: 1, icon: Icons.share_outlined, title: "Share App"),
+    SettingModel(id: 2, icon: Icons.emoji_objects_outlined, title: "Screen On"),
+    SettingModel(id: 3, icon: Icons.info_outline_rounded, title: "Quick Guide"),
+    SettingModel(id: 4, icon: Icons.info_outline_rounded, title: "About Us"),
+    SettingModel(id: 5, icon: Icons.link, title: "Web Link"),
   ];
 
 //bool
@@ -300,16 +301,22 @@ class BookController extends GetxController {
     }
   }
 
-  onTapOfSetting(int index) {
+  onTapOfSetting(int index) async {
     try {
       switch (index) {
-        case 0:
+        /* case 0:
           //redirect to language Screen
           Get.to(
             () => const LanguageScreen(),
             transition: global.navigationAnimation,
             duration: global.navigationDuration,
           );
+          break; */
+
+        case 0:
+          //Share App
+          await Share.share(
+              'Please Check Out Quran Majeed App \n\nAndroid: https://play.google.com/store/apps/details?id=com.app.quran_majeed \n\nIOS: https://apps.apple.com/in/app/quran-majeed/id6740828550');
           break;
         case 1:
           //make validation of scren on
@@ -471,16 +478,38 @@ class BookController extends GetxController {
     }
   }
 
-  void toggleWakelock(value) {
+  Future<void> toggleWakelock(value) async {
     try {
       isScreenOn = value;
-      WakelockPlus.toggle(enable: isScreenOn);
+      await WakelockPlus.toggle(enable: value);
+      await global.sp!.setBool("isScreenOn", value);
       update();
     } catch (e) {
       global.exceptionMessage(
           classNameWithoutExt: className,
           functionNameWithoutBraces: "toggleWakelock",
           e: e);
+    }
+  }
+
+  Future<bool> checkWakeLock() async {
+    try {
+      if (global.sp!.getBool('isScreenOn') == false) {
+        await WakelockPlus.disable();
+        isScreenOn = false;
+        update();
+      } else {
+        await WakelockPlus.enable();
+        isScreenOn = true;
+        update();
+      }
+      return isScreenOn;
+    } catch (e) {
+      global.exceptionMessage(
+          classNameWithoutExt: className,
+          functionNameWithoutBraces: "checkWakeLock",
+          e: e);
+      return false;
     }
   }
 }

@@ -23,13 +23,14 @@ class _SettingScreenState extends State<SettingScreen> {
           child: ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 5,
+            itemCount: bookController.settingList.length,
             separatorBuilder: (context, index) => const Divider(),
             itemBuilder: (context, index) {
               return ListTile(
                 leading: Icon(bookController.settingList[index].icon),
                 title: Text(bookController.settingList[index].title ?? ""),
-                trailing: index == 1
+                trailing: bookController.settingList[index].id ==
+                        2 // 2 id is for screen On
                     ? Container(
                         constraints: const BoxConstraints.tightFor(
                           width: 35, // Adjust width based on scaled size
@@ -53,8 +54,8 @@ class _SettingScreenState extends State<SettingScreen> {
                                     : Colors.transparent),
                             thumbIcon: bookController.thumbIcon,
                             value: bookController.isScreenOn,
-                            onChanged: (bool value) {
-                              bookController.toggleWakelock(value);
+                            onChanged: (bool value) async {
+                              await bookController.toggleWakelock(value);
                               bookController.update();
                               setState(() {});
                             },

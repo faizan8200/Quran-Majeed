@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:quran_app/constants/color_constant.dart';
 import 'package:quran_app/constants/helper.dart';
 import 'package:quran_app/controllers/book_index_controller.dart';
-import 'package:quran_app/demo/demo_screen.dart';
 import 'package:quran_app/utils/list_page.dart';
 
 class BookIndexScreen extends StatefulWidget {
@@ -65,12 +64,9 @@ class _BookIndexScreenState extends State<BookIndexScreen> {
             color: AppColor.whiteColor,
           ),
         ),
-        title: InkWell(
-          onTap: () => Get.to(() => const DemoScreen()),
-          child: const Text(
-            "Main Index",
-            style: TextStyle(color: AppColor.whiteColor),
-          ),
+        title: const Text(
+          "Main Index",
+          style: TextStyle(color: AppColor.whiteColor),
         ),
         actions: [
           IconButton(
@@ -125,17 +121,7 @@ class _BookIndexScreenState extends State<BookIndexScreen> {
                         end: Alignment.bottomCenter,
                         tileMode: TileMode.clamp,
                       ),
-                    ),
-                    /* child: Text(
-                      "${quranIndex.juz[bookIndexController.selectedJuz].juz}",
-                      // "${bookIndexController.selectedJuz + 1}",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                        color: AppColor.whiteColor,
-                      ),
-                    ), */
+                    ),                    
                   ),
                   scrollController: bookIndexController.juzScrollController,
                   onSelectedItemChanged: (int index) {
@@ -233,30 +219,7 @@ class _BookIndexScreenState extends State<BookIndexScreen> {
                         end: Alignment.bottomCenter,
                         tileMode: TileMode.clamp,
                       ),
-                    ),
-                    /* child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${quranIndex.surahs[bookIndexController.selectedSurahIndex].surahNumber == 0 ? "" : "${quranIndex.surahs[bookIndexController.selectedSurahIndex].surahNumber}. "}${quranIndex.surahs[bookIndexController.selectedSurahIndex].name}",
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 1,
-                          ),
-                        ),
-                        Text(
-                          quranIndex
-                              .surahs[bookIndexController.selectedSurahIndex]
-                              .surahDetail,
-                          style: const TextStyle(
-                            fontSize: 11,
-                            letterSpacing: 1,
-                          ),
-                        ),
-                      ],
-                    ), */
+                    ),                    
                   ),
                   scrollController: bookIndexController.surahScrollController,
                   onSelectedItemChanged: (int index) {
@@ -359,16 +322,7 @@ class _BookIndexScreenState extends State<BookIndexScreen> {
                         end: Alignment.bottomCenter,
                         tileMode: TileMode.clamp,
                       ),
-                    ),
-                    /* child: Text(
-                      "${quranIndex.surahs[bookIndexController.selectedSurahIndex].ayahs[bookIndexController.selectedAyah].ayahNumber ?? ""}",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                        color: AppColor.blackColor,
-                      ),
-                    ), */
+                    ),                    
                   ),
                   scrollController: bookIndexController.ayahScrollController,
                   onSelectedItemChanged: (int index) {
@@ -475,16 +429,7 @@ class _BookIndexScreenState extends State<BookIndexScreen> {
                         end: Alignment.bottomCenter,
                         tileMode: TileMode.clamp,
                       ),
-                    ),
-                    /* child: Text(
-                      "${quranIndex.pages[bookIndexController.selectedPage].pageNumber}",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                        color: AppColor.blackColor,
-                      ),
-                    ), */
+                    ),                    
                   ),
                   scrollController: bookIndexController.pageScrollController,
                   onSelectedItemChanged: (int index) {
